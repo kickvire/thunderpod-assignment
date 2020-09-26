@@ -3,6 +3,7 @@ import './EditStudent.css';
 import axios from "axios";
 import { withRouter } from 'react-router'
 import {toast, ToastContainer} from "react-toastify";
+import { Link } from 'react-router-dom';
 
 class EditStudent extends Component {
   state = {
@@ -36,7 +37,7 @@ class EditStudent extends Component {
         enrollnumber: this.refs.enrollnumber.value
       });
       toast(student.data.message ,{ type: toast.TYPE.INFO, autoClose: 3000 });
-
+      
     } catch (err) {
       toast(err.message ,{ type: toast.TYPE.ERROR, autoClose: 3000 });
     }
@@ -49,7 +50,7 @@ class EditStudent extends Component {
       <div className="Edit-Student-Wrapper">
         <h1>Edit page</h1>
         <form onSubmit={this.updateStudentHandler}>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Mentor Name:</label>
           <input
             type="text"
             placeholder="Name..."
@@ -61,7 +62,7 @@ class EditStudent extends Component {
             className="Edit-Student-Input"
             id="name"
           />
-          <label htmlFor="email">Email: <b>(must be a valid email)</b></label>
+          <label htmlFor="email">Mentor Email: <b>(must be a valid email)</b></label>
           <input
             type="email"
             placeholder="Enter your email here"
@@ -73,14 +74,14 @@ class EditStudent extends Component {
             className="Edit-Student-Input"
             id="email"
           />
-          <label htmlFor="enrollnumber">Enrollement Number: </label>
+          <label htmlFor="enrollnumber">Mentor Id: </label>
           <input
             type="number"
             placeholder="Enter the student's enrollment number"
             value={ this.state.enrollnumber }
             name="enrollnumber"
             min="1"
-            max="120"
+            max="1000"
             required
             onChange={this.onChangeHandler}
             ref="enrollnumber"
@@ -88,6 +89,7 @@ class EditStudent extends Component {
             id="enrollnumber"
           />
           <button type="submit" className="Edit-Student-Submit fa fa-pencil"></button>
+          <Link to ={'/'}><button type="submit" className="Add-Student-Submit fa fa-eye" > </button></Link>
         </form>
         <ToastContainer />
       </div>

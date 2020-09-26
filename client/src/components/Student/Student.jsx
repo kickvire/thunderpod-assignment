@@ -16,6 +16,11 @@ const Student = ({ _id, name, email, enrollnumber, removeStudent }) => {
         <Link to={{ pathname: '/edit', search: _id }}>
          <button className="Action-Button fa fa-pencil"></button>
         </Link>
+
+        <Link to={{ pathname: '/task', search: _id }}> 
+        <button type="submit" className="Add-Student-Submit fa fa-plus" const path = '/'></button>
+        </Link>
+        
       </td>
 
     </tr>

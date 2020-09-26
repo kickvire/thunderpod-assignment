@@ -6,6 +6,7 @@ import Home from "../Layout/Home/Home";
 import NavBar from "../Layout/NavBar/NavBar";
 import Add from "../Layout/Add/Add";
 import Edit from "../Layout/Edit/Edit";
+import Task from '../Layout/Task/Task'
 
 const Routes = () => {
   return (
@@ -15,6 +16,7 @@ const Routes = () => {
           <Route path="/" component={ Home } exact />
           <Route path="/add" component={ Add } exact />
           <Route path="/edit" component={ Edit } exact />
+          <Route path="/task" component={ Task } exact />
         </Switch>
       </Fragment>
   );

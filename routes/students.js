@@ -3,6 +3,7 @@ const router = express.Router();
 
 // Student model
 const Students = require('../models/students');
+const Mentors = require('../models/MentorTask');
 
 // @route   GET /api/students/
 // @desc    Get all students
@@ -35,11 +36,24 @@ router.post('/', async (req, res) => {
   try {
     const newStudent = await Students.create({ name: req.body.name, email: req.body.email, enrollnumber: req.body.enrollnumber });
      res.send({ newStudent });
+     
   } catch(err) {
     res.status(400).send({ error: err });
   }
 
 });
+
+
+// router.post('/studentsId', async (req, res) => {
+//   try {
+//     const newTask = await Mentors.create({ task: req.body.task });
+//      res.send({ newTask });
+     
+//   } catch(err) {
+//     res.status(400).send({ error: err });
+//   }
+
+// });
 
 // @route   PUT /api/students/:id
 // @desc    Update a student

@@ -3,7 +3,7 @@ import './AddStudent.css';
 import axios from "axios";
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { Link } from 'react-router-dom';
 class AddStudent extends Component {
   state = {
     name: "",
@@ -25,6 +25,8 @@ class AddStudent extends Component {
       );
 
       toast("Student " + newStudent.data.newStudent.name + " created successfully" ,{ type: toast.TYPE.SUCCESS, autoClose: 3000 });
+      window.location.reload(true);
+
     } catch (err) {
       toast(err.message ,{ type: toast.TYPE.ERROR, autoClose: 3000 });
     }
@@ -33,12 +35,12 @@ class AddStudent extends Component {
   render() {
     return (
       <div className="AddStudent-Wrapper">
-        <h1>Add Student:</h1>
+        <h1>Add Mentor</h1>
         <form onSubmit={this.addStudent}>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Mentor Name:</label>
           <input
             type="text"
-            placeholder="Enter the name of the students here"
+            placeholder="Enter the name of the mentor"
             name="name"
             onChange={this.onChangeHandler}
             ref="name"
@@ -48,7 +50,7 @@ class AddStudent extends Component {
             maxLength="33"
             id="name"
           />
-          <label htmlFor="email">email: <b>(must be a valid email)</b></label>
+          <label htmlFor="email">Mentor email: <b>(must be a valid email)</b></label>
           <input
             type="text"
             placeholder="enter your email here"
@@ -60,21 +62,22 @@ class AddStudent extends Component {
             required
             id="email"
           />
-          <label htmlFor="enrollnumber">Enrollment Number: </label>
+          <label htmlFor="enrollnumber">Mentor Id:</label>
           <input
             type="number"
             placeholder="0 to 120"
             name="enrollnumber"
             min="1"
-            max="120"
+            max="1000"
             onChange={this.onChangeHandler}
             ref="enrollnumber"
             className="Add-Student-Input"
             required
             id="enrollnumber"
           />
-          <button type="submit" className="Add-Student-Submit fa fa-plus"></button>
+          <button type="submit" className="Add-Student-Submit fa fa-plus" > </button>
           <button type="reset" className="Add-Student-Reset fa fa-refresh"></button>
+          <Link to ={'/'}><button type="submit" className="Add-Student-Submit fa fa-eye" > </button></Link>
         </form>
         <ToastContainer />
       </div>

@@ -16,7 +16,7 @@ const studentSchema = new mongoose.Schema({
   enrollnumber: {
     type: Number,
     min: 1,
-    max: 120
+    max: 1000
   }
 });
 
