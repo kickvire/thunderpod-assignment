@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const studentSchema = new mongoose.Schema({
+const contactSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -13,14 +13,14 @@ const studentSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  enrollnumber: {
-    type: Number,
-    min: 1,
-    max: 1000
+  phoneNumber: {
+    type: String,
+    required:true
+
   }
 });
 
-module.exports = mongoose.model('students', studentSchema);
+module.exports = mongoose.model('contacts', contactSchema);
 
 
 

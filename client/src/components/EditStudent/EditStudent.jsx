@@ -10,7 +10,7 @@ class EditStudent extends Component {
     id: '',
     name: "",
     email: "",
-    enrollnumber: "",
+    phoneNumber: "",
     response: ""
   };
 
@@ -21,8 +21,8 @@ class EditStudent extends Component {
     let search =  this.props.location.search,
       id = search.substring(1, search.length);
     const updateStudent = await axios(`/api/students/${id}`);
-    const { name, email, enrollnumber } = updateStudent.data.student;
-    this.setState({ id, name, email, enrollnumber  });
+    const { name, email, phoneNumber } = updateStudent.data.student;
+    this.setState({ id, name, email, phoneNumber  });
     } catch (err) {
       this.setState({ response: "Student not found!" })
     }
@@ -34,7 +34,7 @@ class EditStudent extends Component {
       const student = await axios.put(`/api/students/${this.state.id}`, {
         name: this.refs.name.value,
         email: this.refs.email.value,
-        enrollnumber: this.refs.enrollnumber.value
+        phoneNumber: this.refs.phoneNumber.value
       });
       toast(student.data.message ,{ type: toast.TYPE.INFO, autoClose: 3000 });
       
@@ -45,12 +45,12 @@ class EditStudent extends Component {
 
   render() {
     if (this.state.response === "Student not found!")
-      return <h1>Student not found!</h1>
+      return <h1>Contact not found!</h1>
     return (
       <div className="Edit-Student-Wrapper">
-        <h1>Edit page</h1>
+        <h1>Edit contact</h1>
         <form onSubmit={this.updateStudentHandler}>
-          <label htmlFor="name">Mentor Name:</label>
+          <label htmlFor="name">Name:</label>
           <input
             type="text"
             placeholder="Name..."
@@ -62,7 +62,7 @@ class EditStudent extends Component {
             className="Edit-Student-Input"
             id="name"
           />
-          <label htmlFor="email">Mentor Email: <b>(must be a valid email)</b></label>
+          <label htmlFor="email">Email: <b>(must be a valid email)</b></label>
           <input
             type="email"
             placeholder="Enter your email here"
@@ -74,19 +74,18 @@ class EditStudent extends Component {
             className="Edit-Student-Input"
             id="email"
           />
-          <label htmlFor="enrollnumber">Mentor Id: </label>
+          <label htmlFor="phoneNumber">Phone Number</label>
           <input
-            type="number"
+            type="text"
             placeholder="Enter the student's enrollment number"
-            value={ this.state.enrollnumber }
-            name="enrollnumber"
-            min="1"
-            max="1000"
+            value={ this.state.phoneNumber}
+            name="phoneNumber"
             required
             onChange={this.onChangeHandler}
-            ref="enrollnumber"
+            ref="phoneNumber"
             className="Edit-Student-Input"
             id="enrollnumber"
+            
           />
           <button type="submit" className="Edit-Student-Submit fa fa-pencil"></button>
           <Link to ={'/'}><button type="submit" className="Add-Student-Submit fa fa-eye" > </button></Link>

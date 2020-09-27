@@ -12,13 +12,15 @@ class SearchStudents extends Component {
 
   render() {
     return (
+      <div>
       <input
         type="text"
-        placeholder="Filter by name..."
+        placeholder="search contacts..."
         name="name"
         onChange={ this.onChangeHandler }
         className="Search-Student-Input"
       />
+      </div>
     );
   }
 }

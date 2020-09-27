@@ -2,15 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 // Student model
-const Students = require('../models/students');
-const Mentors = require('../models/MentorTask');
+const Contact = require('../models/contacts');
+
 
 // @route   GET /api/students/
 // @desc    Get all students
 // @access  Public
 router.get('/', async (req, res) => {
   try {
-    const students = await Students.find({});
+    const students = await Contact.find({});
     res.send({ students })
   } catch(err) {
     res.status(400).send({ error: err });
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 // @access  Public
 router.get('/:id', async (req, res) => {
   try {
-    const student = await Students.findById(req.params.id);
+    const student = await Contact.findById(req.params.id);
     res.send({ student });
   } catch (err) {
     res.status(404).send({ message: 'Student not found!' });
@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
 // @access  Public
 router.post('/', async (req, res) => {
   try {
-    const newStudent = await Students.create({ name: req.body.name, email: req.body.email, enrollnumber: req.body.enrollnumber });
+    const newStudent = await Contact.create({ name: req.body.name, email: req.body.email, phoneNumber: req.body.phoneNumber });
      res.send({ newStudent });
      
   } catch(err) {
@@ -60,7 +60,7 @@ router.post('/', async (req, res) => {
 // @access  Public
 router.put('/:id', async (req, res) => {
   try {
-    const updatedStudent = await Students.findByIdAndUpdate(req.params.id, req.body);
+    const updatedStudent = await Contact.findByIdAndUpdate(req.params.id, req.body);
      res.send({ message: 'The student was updated' });
   } catch(err) {
     res.status(400).send({ error: err });
@@ -72,7 +72,7 @@ router.put('/:id', async (req, res) => {
 // @access  Public
 router.delete('/:id', async (req, res) => {
   try {
-    const removeStudent = await Students.findByIdAndRemove(req.params.id);
+    const removeStudent = await Contact.findByIdAndRemove(req.params.id);
      res.send({ message: 'The student was removed' });
   } catch(err) {
     res.status(400).send({ error: err });

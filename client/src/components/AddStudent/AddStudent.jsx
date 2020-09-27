@@ -8,7 +8,7 @@ class AddStudent extends Component {
   state = {
     name: "",
     email: "",
-    enrollnumber: "",
+    phoneNumber: "",
     response: ""
   };
 
@@ -20,7 +20,7 @@ class AddStudent extends Component {
       const newStudent = await axios.post("/api/students/", {
           name: this.refs.name.value,
           email: this.refs.email.value,
-          enrollnumber: this.refs.enrollnumber.value
+          phoneNumber: this.refs.phoneNumber.value
         }
       );
 
@@ -35,9 +35,9 @@ class AddStudent extends Component {
   render() {
     return (
       <div className="AddStudent-Wrapper">
-        <h1>Add Mentor</h1>
+        <h1>Add Contacts</h1>
         <form onSubmit={this.addStudent}>
-          <label htmlFor="name">Mentor Name:</label>
+          <label htmlFor="name">Name:</label>
           <input
             type="text"
             placeholder="Enter the name of the mentor"
@@ -50,7 +50,7 @@ class AddStudent extends Component {
             maxLength="33"
             id="name"
           />
-          <label htmlFor="email">Mentor email: <b>(must be a valid email)</b></label>
+          <label htmlFor="email">email: <b>(must be a valid email)</b></label>
           <input
             type="text"
             placeholder="enter your email here"
@@ -62,18 +62,17 @@ class AddStudent extends Component {
             required
             id="email"
           />
-          <label htmlFor="enrollnumber">Mentor Id:</label>
+          <label htmlFor="phoneNumber">Phone Number</label>
           <input
-            type="number"
-            placeholder="0 to 120"
-            name="enrollnumber"
-            min="1"
-            max="1000"
+            type="text"
+            placeholder="Enter your contact number"
+            name="phoneNumber"
             onChange={this.onChangeHandler}
-            ref="enrollnumber"
+            ref="phoneNumber"
             className="Add-Student-Input"
             required
             id="enrollnumber"
+            
           />
           <button type="submit" className="Add-Student-Submit fa fa-plus" > </button>
           <button type="reset" className="Add-Student-Reset fa fa-refresh"></button>

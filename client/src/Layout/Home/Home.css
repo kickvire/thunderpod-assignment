@@ -60,3 +60,15 @@ td {
   height: 100vh;
   align-items: center;
 }
+
+#page-numbers {
+  list-style: none;
+  display: flex;
+}
+
+#page-numbers > li {
+  margin-right: 0.3em;
+  color: blue;
+  user-select: none;
+  cursor: pointer;
+}
