@@ -20,7 +20,7 @@ class EditStudent extends Component {
     try {
     let search =  this.props.location.search,
       id = search.substring(1, search.length);
-    const updateStudent = await axios(`/api/students/${id}`);
+    const updateStudent = await axios(`https://intouchapp-backend.herokuapp.com/api/students/${id}`);
     const { name, email, phoneNumber } = updateStudent.data.student;
     this.setState({ id, name, email, phoneNumber  });
     } catch (err) {
@@ -31,7 +31,7 @@ class EditStudent extends Component {
   updateStudentHandler = async (e) => {
     e.preventDefault();
     try {
-      const student = await axios.put(`/api/students/${this.state.id}`, {
+      const student = await axios.put(`https://intouchapp-backend.herokuapp.com/api/students/${this.state.id}`, {
         name: this.refs.name.value,
         email: this.refs.email.value,
         phoneNumber: this.refs.phoneNumber.value

@@ -23,7 +23,7 @@ class Home extends Component {
 
   async componentDidMount() {
     try {
-      const students = await axios("/api/students/");
+      const students = await axios("https://intouchapp-backend.herokuapp.com/api/students/");
       this.setState({ data: students.data });
     } catch (err) {
       this.setState({ error: err.message });
@@ -32,8 +32,8 @@ class Home extends Component {
 
   removeStudent = async id => {
     try {
-      const studentRemoved = await axios.delete(`/api/students/${id}`);
-      const students = await axios("/api/students/");
+      const studentRemoved = await axios.delete(`https://intouchapp-backend.herokuapp.com/api/students/${id}`);
+      const students = await axios("https://intouchapp-backend.herokuapp.com/api/students/");
       this.setState({ data: students.data });
     } catch (err) {
       this.setState({ error: err.message });

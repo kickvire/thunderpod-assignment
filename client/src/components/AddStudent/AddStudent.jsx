@@ -17,7 +17,7 @@ class AddStudent extends Component {
   addStudent = async e => {
     e.preventDefault();
     try {
-      const newStudent = await axios.post("/api/students/", {
+      const newStudent = await axios.post("https://intouchapp-backend.herokuapp.com/api/students/", {
           name: this.refs.name.value,
           email: this.refs.email.value,
           phoneNumber: this.refs.phoneNumber.value
